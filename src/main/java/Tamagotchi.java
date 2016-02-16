@@ -10,9 +10,20 @@ public class Tamagotchi {
   private String mTamagotchiName;
   private int mFoodCount;
 
-  public Tamagotchi(String TamagotchiName) {
+  public Tamagotchi(String TamagotchiName, int MAX_FOOD) {
     mTamagotchiName = TamagotchiName;
-    mFoodCount = 0;
+    mFoodCount = MAX_FOOD;
+  }
+  //click submit btn
+
+  public boolean play() {
+    mFoodCount -= 1;
+    return mFoodCount;
+  }
+
+  public boolean feed() {
+    mFoodCount += 1;
+    return mFoodCount;
   }
 
   public boolean isEmpty() {
