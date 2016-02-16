@@ -3,7 +3,7 @@ apply plugin: 'application'
 
 archivesBaseName = "tamagotchi"
 version = '1.0'
-mainClassName = "Tamagotchi"
+mainClassName = "app"
 
 repositories {
  mavenCentral()

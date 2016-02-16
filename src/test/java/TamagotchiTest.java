@@ -16,18 +16,7 @@ public class TamagotchiTest {
     assertEquals("Grendel", testTamagotchi.getTamagotchiName());
   }
 
-  @Test
-  public void TamagotchiisEmpty() {
-    Tamagotchi testTamagotchi = new Tamagotchi("Grendel");
-    assertEquals(true, testTamagotchi.isEmpty());
-  }
 
-  @Test
-  public void TamagotchiisFull() {
-    Tamagotchi testTamagotchi = new Tamagotchi("Grendel");
-    testTamagotchi.load();
-    assertEquals(false, testTamagotchi.isEmpty());
-  }
 
 
 

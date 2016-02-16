@@ -10,28 +10,28 @@ public class Tamagotchi {
   private String mTamagotchiName;
   private int mFoodCount;
 
-  public Tamagotchi(String TamagotchiName, int MAX_FOOD) {
+  public Tamagotchi(String TamagotchiName) {
     mTamagotchiName = TamagotchiName;
     mFoodCount = MAX_FOOD;
   }
   //click submit btn
 
-  public boolean play() {
+  public Object play() {
     mFoodCount -= 1;
-    return mFoodCount;
+    if (mFoodCount == 0) {
+      return "I'm Hungry!";
+    } else {
+      return mFoodCount;
+    }
   }
 
-  public boolean feed() {
+  public Object feed() {
     mFoodCount += 1;
-    return mFoodCount;
-  }
-
-  public boolean isEmpty() {
-    return mFoodCount == 0;
-  }
-
-  public void load() {
-    mFoodCount = MAX_FOOD;
+    if (mFoodCount == 10) {
+      return "I'm Full";
+    } else {
+      return mFoodCount;
+    }
   }
 
   public String getTamagotchiName() {
