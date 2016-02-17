@@ -1,15 +1,16 @@
 public class Tamagotchi {
   private String mTamagotchiName;
-  public static final int MAX_FOOD = 10;
+  public static final int MAX_FOOD = 11;
   private int mFoodCount;
 
   public Tamagotchi(String name) {
     mTamagotchiName = name;
+    mFoodCount = MAX_FOOD;
   }
 
   public int play() {
     mFoodCount -= 1;
-    return mFoodCount;
+      return mFoodCount;
   }
 
   public Object feed() {
