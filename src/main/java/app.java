@@ -10,20 +10,33 @@ public class app {
     String layout = "templates/layout.vtl";
 
     get("/", (request, response) -> {
-      HashMap<String, Object> model = new HashMap<String, Object>();
+      HashMap model = new HashMap<String, Object>();
       model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-  get("/newguy", (request, response) -> {
-      HashMap<String, Object> model = new HashMap<String, Object>();
-      String newName = request.queryParams("name");
+    post("/newguy", (request, response) -> {
+      HashMap model = new HashMap();
 
-      Tamagotchi myTamagotchi = new Tamagotchi(newName);
-      String newGuy = myTamagotchi.getTamagotchiName();
-      model.put("newGuy", newGuy);
+      Tamagotchi myTamagotchi = request.session().attribute("pet");
+      String name;
+      if (myTamagotchi == null) {
+        name = request.queryParams("name");
+        myTamagotchi = new Tamagotchi(name);
+        request.session().attribute("pet", myTamagotchi);
+      } else {
+        name = myTamagotchi.getTamagotchiName();
+      }
+
+      String action = request.queryParams("action");
+      if (action != null) {
+      if (action.equals("play")) {
+        myTamagotchi.play();
+        }
+      }
+      model.put("myTamagotchi", myTamagotchi);
       model.put("template", "templates/newguy.vtl");
       return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
+      }, new VelocityTemplateEngine());
   }
 }

@@ -1,28 +1,15 @@
-import java.util.Map;
-import java.util.HashMap;
-import java.util.ArrayList;
-import spark.ModelAndView;
-import spark.template.velocity.VelocityTemplateEngine;
-import static spark.Spark.*;
-
 public class Tamagotchi {
-  public static final int MAX_FOOD = 10;
   private String mTamagotchiName;
+  public static final int MAX_FOOD = 10;
   private int mFoodCount;
 
-  public Tamagotchi(String TamagotchiName) {
-    mTamagotchiName = TamagotchiName;
-    mFoodCount = MAX_FOOD;
+  public Tamagotchi(String name) {
+    mTamagotchiName = name;
   }
-  //click submit btn
 
-  public Object play() {
+  public int play() {
     mFoodCount -= 1;
-    if (mFoodCount == 0) {
-      return "I'm Hungry!";
-    } else {
-      return mFoodCount;
-    }
+    return mFoodCount;
   }
 
   public Object feed() {
